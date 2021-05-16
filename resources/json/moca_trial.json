@@ -1,0 +1,209 @@
+{
+  "info": {
+    "isTrialScored": false,
+    "trialID": "MOCA001"
+  } ,
+  "tests": [
+    {
+      "title": "Une los puntos",
+      "parametersNumber": 1,
+      "parametersType":["filename"],
+      "parameters": ["joinDots01.jpg"],
+      "maxScore": 1,
+      "name": "joinDots",
+      "testType": 1,
+      "testID": "101"
+    },
+    {
+      "title": "Copia el dibujo del cubo",
+      "parametersNumber": 1,
+      "parametersType":["filename"],
+      "parameters": ["cubo.jpg"],
+      "maxScore": 1,
+      "name": "copyCube",
+      "testType": 1,
+      "testID": "102"
+    },
+    {
+      "title": "Dibuja un reloj marcando las 11 y 10",
+      "parametersNumber": 1,
+      "parametersType":["filename"],
+      "parameters": ["blank.jpg"],
+      "maxScore": 3,
+      "name": "drawClock",
+      "scoreOptions": [
+        "Contorno",
+        "Números",
+        "Agujas"
+      ],
+      "testType": 1,
+      "testID": "103"
+    },
+    {
+      "parametersNumber": 1,
+      "parametersType":["filename"],
+      "parameters": ["leon.jpeg"],
+      "maxScore": 1,
+      "name": "fotoLeon",
+      "testType": 3,
+      "testID": "001"
+    },
+    {
+      "parametersNumber": 1,
+      "parametersType":["filename"],
+      "parameters": ["rinoceronte.jpeg"],
+      "maxScore": 1,
+      "name": "fotoRinoceronte",
+      "testType": 3,
+      "testID": "002"
+    },
+    {
+      "parametersNumber": 1,
+      "parametersType":["filename"],
+      "parameters": ["dromedario.jpeg"],
+      "maxScore": 1,
+      "name": "fotoDromedario",
+      "testType": 3,
+      "testID": "003"
+    },
+    {
+      "parametersNumber": 1,
+      "parametersType":["filename"],
+      "parameters": ["attention01.png"],
+      "maxScore": 1,
+      "name": "atencionOrdenDirecto",
+      "testType": 3,
+      "testID": "304"
+    },
+    {
+      "parametersNumber": 1,
+      "parametersType":["filename"],
+      "parameters": ["attention02.png"],
+      "maxScore": 1,
+      "name": "atencionOrdenInverso",
+      "testType": 3,
+      "testID": "305"
+    },
+    {
+      "name": "repetirPalabras",
+      "maxScore": 0,
+      "testType": 0,
+      "testID": "001",
+      "isContainsTests": true,
+      "testPieces": [
+        {
+          "name": "repetirPalabras01",
+          "maxScore": 0,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["repeatWords01.png"],
+          "testType": 3,
+          "testID": "306",
+          "scoreOptions": ["Rostro","Seda","Iglesia","Clavel","Rojo"]
+        },
+        {
+          "name": "repetirPalabras02",
+          "maxScore": 0,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["repeatWords01.png"],
+          "testType": 3,
+          "testID": "307",
+          "scoreOptions": ["Rostro","Seda","Iglesia","Clavel","Rojo"]
+        }
+      ]
+    },
+    {
+      "maxScore": 1,
+      "name": "pulsarLetraA",
+      "testType": 2,
+      "testID": "201",
+      "parametersNumber": 29,
+      "parametersType": ["char","char","char","char","char",
+        "char","char","char","char","char",
+        "char","char","char","char","char",
+        "char","char","char","char","char",
+        "char","char","char","char","char",
+        "char","char","char","char"],
+      "parameters": [
+        "F","B","A","C","M","N","A","A","J","K","L","B","A","F","A",
+        "K","D","E","A","A","A","J","A","M","O","F","A","A","B"]
+    },
+    {
+      "name": "repetirFrases",
+      "maxScore": 2,
+      "testType": 0,
+      "testID":"002",
+      "parametersNumber":0,
+      "isContainsTests": true,
+      "testPieces": [
+        {
+          "name": "repetirFrase01",
+          "maxScore": 1,
+          "testType": 3,
+          "testID": "308",
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["repeatSentence01.png"]
+        },
+        {
+          "name": "repetirFrase02",
+          "maxScore": 1,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["repeatSentence02.png"],
+          "testType": 3,
+          "testID": "309"
+        }
+      ]
+    },
+    {
+      "name": "máximoNúmeroPalabras",
+      "maxScore": 1,
+      "parametersNumber": 1,
+      "parametersType":["filename"],
+      "parameters": ["maxNumPalabras01.png"],
+      "testType": 3,
+      "testID": "313",
+      "scoreOptions": ["Más de 10 palabras"]
+    },
+    {
+      "name": "similitudes",
+      "maxScore": 2,
+      "testType": 0,
+      "testID": "003",
+      "parametersNumber": 0,
+      "isContainsTests": true,
+      "testPieces": [
+        {
+          "name": "similitudes01",
+          "maxScore": 1,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["similarities01.png"],
+          "testType": 3,
+          "testID": "310"
+        },
+        {
+          "name": "similitudes02",
+          "maxScore": 1,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["similarities02.png"],
+          "testType": 3,
+          "testID": "311"
+        }
+      ]
+    },
+    {
+      "name": "recuerdoDiferido01",
+      "maxScore": 5,
+      "parametersNumber": 1,
+      "parametersType":["filename"],
+      "parameters": ["recallWords01.png"],
+      "testType": 3,
+      "testID": "312",
+      "scoreOptions": ["Rostro","Seda","Iglesia","Clavel","Rojo"]
+    }
+  ]
+}

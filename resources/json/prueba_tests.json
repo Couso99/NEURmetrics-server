@@ -1,0 +1,59 @@
+{
+  "info": {
+    "trialID": "MOCA001"
+    "corege" :0
+  },
+  "tests":
+  [
+  { "name":"joinDots",
+  "testID": "101",
+  "comment": "Une los puntos",
+  "filename":"joinDots01.jpg",
+  "maxScore": 1
+},{
+  "name":"copyCube",
+  "testID": "102",
+  "comment": "Copia el dibujo del cubo",
+  "filename": "cubo.jpg",
+  "maxScore": 1
+},{
+  "name":"drawClock",
+  "testID": "103",
+  "comment": "Dibuja un reloj marcando las 11 y 10",
+  "filename":"blank.jpg",
+  "maxScore": 3,
+  "scoreComments": ["Contorno","Números","Agujas"]
+},{
+  "name":"fotoLeon",
+  "testID": "001",
+  "filename":"leon.jpeg",
+  "maxScore": 1
+},{
+  "name" : "fotoRinoceronte",
+  "testID": "002",
+  "filename":"rinoceronte.jpeg",
+  "maxScore": 1
+},{
+  "name" : "fotoDromedario",
+  "testID": "003",
+  "filename":"dromedario.jpeg",
+  "maxScore": 1
+},{
+  "name" : "atencionOrdenDirecto",
+  "testID": "004",
+  "filename": "attention01.png",
+  "maxScore": 1
+},{
+  "name" : "atencionOrdenInverso",
+  "testID": "005",
+  "filename": "attention02.png",
+  "maxScore": 1
+},{
+  "name":"pulsarLetraA",
+  "testID": "201",
+  "textArray": ["F","B","A","C","M", "N", "A", "A", "J", "K", "L", "B", "A",
+    "F", "A", "K", "D", "E", "A", "A", "A", "J", "A", "M", "O", "F", "A", "A", "B"],
+  "maxScore": 1
+}
+]
+}

@@ -1,0 +1,28 @@
+{
+  "image_tests":
+    {
+    "image_test":
+    [
+      {
+        "idtest": "1",
+        "name": "leon",
+        "filename": "leon.jpeg"
+      },
+      {
+        "idtest": "2",
+        "name": "rinoceronte",
+        "filename": "rinoceronte.jpeg"
+      }
+    ]
+  },
+  "draw_tests":
+  {
+    "draw_test":
+    [
+      {
+        "idtest": "1",
+        "name": "unir lineas"
+      }
+    ]
+  }
+}

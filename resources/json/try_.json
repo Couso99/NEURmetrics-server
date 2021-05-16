@@ -1,0 +1,128 @@
+{
+  "info": {
+    "isTrialScored": false,
+    "trialID": "FOTOS001"
+  } ,
+  "tests": [
+    {
+      "name": "nombrarFotos",
+      "maxScore": 6,
+      "testType": 0,
+      "testID": "001",
+      "isContainsTests": true,
+      "testPieces": [
+        {
+          "name": "nombrarFotos01",
+          "maxScore": 1,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["leon.jpeg"],
+          "testType": 3,
+          "testID": "301"
+        },
+        {
+          "name": "nombrarFotos02",
+          "maxScore": 1,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["rinoceronte.jpeg"],
+          "testType": 3,
+          "testID": "302"
+        },
+        {
+          "name": "nombrarFotos03",
+          "maxScore": 1,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["similarities01.png"],
+          "testType": 3,
+          "testID": "303"
+        },
+        {
+          "name": "nombrarFotos04",
+          "maxScore": 1,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["similarities02.png"],
+          "testType": 3,
+          "testID": "304"
+        },
+        {
+          "name": "nombrarFotos05",
+          "maxScore": 1,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["recallWords01.png"],
+          "testType": 3,
+          "testID": "305"
+        },
+        {
+          "name": "nombrarFotos06",
+          "maxScore": 1,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["attention02.png"],
+          "testType": 3,
+          "testID": "306"
+        }
+      ]
+    },
+    {
+      "name": "fluidezVerbalNombres",
+      "maxScore": -1,
+      "testType": 0,
+      "testID": "001",
+      "isContainsTests": true,
+      "testPieces": [
+        {
+          "name": "fluidezVerbalNombresHombre",
+          "maxScore": -1,
+          "parametersNumber": 1,
+          "parametersType": ["filename"],
+          "parameters": ["dromedario.jpeg"],
+          "testType": 3,
+          "testID": "308"
+        },
+        {
+          "name": "fluidezVerbalNombresMujer",
+          "maxScore": -1,
+          "parametersNumber": 1,
+          "parametersType": ["filename"],
+          "parameters": ["rinoceronte.jpeg"],
+          "testType": 3,
+          "testID": "308"
+        }
+
+      ]
+    },
+    {
+      "name": "recuerdoDiferido",
+      "maxScore": 6,
+      "testType": 0,
+      "testID": "001",
+      "isContainsTests": true,
+      "testPieces": [
+        {
+          "name": "recuerdoDiferido01",
+          "maxScore": 12,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["recallWords01.png"],
+          "testType": 3,
+          "testID": "312",
+          "scoreOptions": ["Cartas","Coche","Pera","Trompeta","Zapatos", "Cuchara"]
+        },
+        {
+          "name": "recuerdoDiferido02",
+          "maxScore": 6,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["similarities01.png"],
+          "testType": 3,
+          "testID": "312",
+          "scoreOptions": ["Cartas","Coche","Pera","Trompeta","Zapatos", "Cuchara"]
+        }
+      ]
+    }
+  ]
+}

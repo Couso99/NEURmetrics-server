@@ -1,0 +1,485 @@
+{
+  "tests": [
+    {
+      "expandedScore": [
+        1
+      ],
+      "h1": "1-A-2-B",
+      "isContainsTests": false,
+      "maxScore": 1,
+      "name": "joinDots",
+      "outputFilename": "joinDots_draw.jpeg",
+      "parameters": [
+        "joinDots01.jpg"
+      ],
+      "parametersNumber": 1,
+      "parametersType": [
+        "filename"
+      ],
+      "score": 1,
+      "startTestTimeOffset": 17,
+      "stopTestTimeOffset": 2054,
+      "testID": "101",
+      "testType": 1,
+      "title": "Une los puntos"
+    },
+    {
+      "expandedScore": [
+        0
+      ],
+      "isContainsTests": false,
+      "maxScore": 1,
+      "name": "copyCube",
+      "outputFilename": "copyCube_draw.jpeg",
+      "parameters": [
+        "cubo.jpg"
+      ],
+      "parametersNumber": 1,
+      "parametersType": [
+        "filename"
+      ],
+      "score": 0,
+      "startTestTimeOffset": 4271,
+      "stopTestTimeOffset": 10416,
+      "testID": "102",
+      "testType": 1,
+      "title": "Copia el dibujo del cubo"
+    },
+    {
+      "expandedScore": [
+        0,
+        0,
+        0
+      ],
+      "isContainsTests": false,
+      "maxScore": 3,
+      "name": "drawClock",
+      "outputFilename": "drawClock_draw.jpeg",
+      "parameters": [
+        "blank.jpg"
+      ],
+      "parametersNumber": 1,
+      "parametersType": [
+        "filename"
+      ],
+      "score": 0,
+      "scoreOptions": [
+        "Contorno",
+        "Números",
+        "Agujas"
+      ],
+      "startTestTimeOffset": 11216,
+      "stopTestTimeOffset": 13338,
+      "testID": "103",
+      "testType": 1,
+      "title": "Dibuja un reloj marcando las 11 y 10"
+    },
+    {
+      "expandedScore": [
+        0
+      ],
+      "isContainsTests": false,
+      "maxScore": 1,
+      "name": "fotoLeon",
+      "parameters": [
+        "leon.jpeg"
+      ],
+      "parametersNumber": 1,
+      "parametersType": [
+        "filename"
+      ],
+      "score": 0,
+      "startTestTimeOffset": 14225,
+      "stopTestTimeOffset": 15461,
+      "testID": "001",
+      "testType": 3
+    },
+    {
+      "expandedScore": [
+        0
+      ],
+      "isContainsTests": false,
+      "maxScore": 1,
+      "name": "fotoRinoceronte",
+      "parameters": [
+        "rinoceronte.jpeg"
+      ],
+      "parametersNumber": 1,
+      "parametersType": [
+        "filename"
+      ],
+      "score": 0,
+      "startTestTimeOffset": 15978,
+      "stopTestTimeOffset": 16987,
+      "testID": "002",
+      "testType": 3
+    },
+    {
+      "expandedScore": [
+        0
+      ],
+      "isContainsTests": false,
+      "maxScore": 1,
+      "name": "fotoDromedario",
+      "parameters": [
+        "dromedario.jpeg"
+      ],
+      "parametersNumber": 1,
+      "parametersType": [
+        "filename"
+      ],
+      "score": 0,
+      "startTestTimeOffset": 17860,
+      "stopTestTimeOffset": 18431,
+      "testID": "003",
+      "testType": 3
+    },
+    {
+      "expandedScore": [
+        0
+      ],
+      "isContainsTests": false,
+      "maxScore": 1,
+      "name": "atencionOrdenDirecto",
+      "parameters": [
+        "attention01.png"
+      ],
+      "parametersNumber": 1,
+      "parametersType": [
+        "filename"
+      ],
+      "score": 0,
+      "startTestTimeOffset": 18869,
+      "stopTestTimeOffset": 19303,
+      "testID": "304",
+      "testType": 3
+    },
+    {
+      "expandedScore": [
+        0
+      ],
+      "isContainsTests": false,
+      "maxScore": 1,
+      "name": "atencionOrdenInverso",
+      "parameters": [
+        "attention02.png"
+      ],
+      "parametersNumber": 1,
+      "parametersType": [
+        "filename"
+      ],
+      "score": 0,
+      "startTestTimeOffset": 19716,
+      "stopTestTimeOffset": 20142,
+      "testID": "305",
+      "testType": 3
+    },
+    {
+      "isContainsTests": true,
+      "maxScore": 0,
+      "name": "repetirPalabras",
+      "parametersNumber": 0,
+      "score": 0,
+      "startTestTimeOffset": 0,
+      "stopTestTimeOffset": 0,
+      "testID": "001",
+      "testPieces": [
+        {
+          "expandedScore": [],
+          "isContainsTests": false,
+          "maxScore": 0,
+          "name": "repetirPalabras01",
+          "parameters": [
+            "repeatWords01.png"
+          ],
+          "parametersNumber": 1,
+          "parametersType": [
+            "filename"
+          ],
+          "score": 0,
+          "scoreOptions": [
+            "Rostro",
+            "Seda",
+            "Iglesia",
+            "Clavel",
+            "Rojo"
+          ],
+          "startTestTimeOffset": 20582,
+          "stopTestTimeOffset": 20993,
+          "testID": "306",
+          "testType": 3
+        },
+        {
+          "expandedScore": [],
+          "isContainsTests": false,
+          "maxScore": 0,
+          "name": "repetirPalabras02",
+          "parameters": [
+            "repeatWords01.png"
+          ],
+          "parametersNumber": 1,
+          "parametersType": [
+            "filename"
+          ],
+          "score": 0,
+          "scoreOptions": [
+            "Rostro",
+            "Seda",
+            "Iglesia",
+            "Clavel",
+            "Rojo"
+          ],
+          "startTestTimeOffset": 21925,
+          "stopTestTimeOffset": 22375,
+          "testID": "307",
+          "testType": 3
+        }
+      ],
+      "testType": 0
+    },
+    {
+      "expandedScore": [
+        0
+      ],
+      "isContainsTests": false,
+      "maxScore": 1,
+      "name": "pulsarLetraA",
+      "outputFilename": "pulsarLetraA_screenshot.jpeg",
+      "parameters": [
+        "F",
+        "B",
+        "A",
+        "C",
+        "M",
+        "N",
+        "A",
+        "A",
+        "J",
+        "K",
+        "L",
+        "B",
+        "A",
+        "F",
+        "A",
+        "K",
+        "D",
+        "E",
+        "A",
+        "A",
+        "A",
+        "J",
+        "A",
+        "M",
+        "O",
+        "F",
+        "A",
+        "A",
+        "B"
+      ],
+      "parametersNumber": 29,
+      "parametersType": [
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char",
+        "char"
+      ],
+      "score": 0,
+      "startTestTimeOffset": 22810,
+      "stopTestTimeOffset": 23789,
+      "testID": "201",
+      "testType": 2
+    },
+    {
+      "isContainsTests": true,
+      "maxScore": 2,
+      "name": "repetirFrases",
+      "parametersNumber": 0,
+      "score": 0,
+      "startTestTimeOffset": 0,
+      "stopTestTimeOffset": 0,
+      "testID": "002",
+      "testPieces": [
+        {
+          "expandedScore": [
+            0
+          ],
+          "isContainsTests": false,
+          "maxScore": 1,
+          "name": "repetirFrase01",
+          "parameters": [
+            "repeatSentence01.png"
+          ],
+          "parametersNumber": 1,
+          "parametersType": [
+            "filename"
+          ],
+          "score": 0,
+          "startTestTimeOffset": 24560,
+          "stopTestTimeOffset": 25275,
+          "testID": "308",
+          "testType": 3
+        },
+        {
+          "expandedScore": [
+            0
+          ],
+          "isContainsTests": false,
+          "maxScore": 1,
+          "name": "repetirFrase02",
+          "parameters": [
+            "repeatSentence02.png"
+          ],
+          "parametersNumber": 1,
+          "parametersType": [
+            "filename"
+          ],
+          "score": 0,
+          "startTestTimeOffset": 25802,
+          "stopTestTimeOffset": 26365,
+          "testID": "309",
+          "testType": 3
+        }
+      ],
+      "testType": 0
+    },
+    {
+      "expandedScore": [
+        0
+      ],
+      "isContainsTests": false,
+      "maxScore": 1,
+      "name": "máximoNúmeroPalabras",
+      "parameters": [
+        "maxNumPalabras01.png"
+      ],
+      "parametersNumber": 1,
+      "parametersType": [
+        "filename"
+      ],
+      "score": 0,
+      "scoreOptions": [
+        "Más de 10 palabras"
+      ],
+      "startTestTimeOffset": 26884,
+      "stopTestTimeOffset": 27412,
+      "testID": "313",
+      "testType": 3
+    },
+    {
+      "isContainsTests": true,
+      "maxScore": 2,
+      "name": "similitudes",
+      "parametersNumber": 0,
+      "score": 0,
+      "startTestTimeOffset": 0,
+      "stopTestTimeOffset": 0,
+      "testID": "003",
+      "testPieces": [
+        {
+          "expandedScore": [
+            0
+          ],
+          "isContainsTests": false,
+          "maxScore": 1,
+          "name": "similitudes01",
+          "parameters": [
+            "similarities01.png"
+          ],
+          "parametersNumber": 1,
+          "parametersType": [
+            "filename"
+          ],
+          "score": 0,
+          "startTestTimeOffset": 27966,
+          "stopTestTimeOffset": 28572,
+          "testID": "310",
+          "testType": 3
+        },
+        {
+          "expandedScore": [
+            0
+          ],
+          "isContainsTests": false,
+          "maxScore": 1,
+          "name": "similitudes02",
+          "parameters": [
+            "similarities02.png"
+          ],
+          "parametersNumber": 1,
+          "parametersType": [
+            "filename"
+          ],
+          "score": 0,
+          "startTestTimeOffset": 29172,
+          "stopTestTimeOffset": 29738,
+          "testID": "311",
+          "testType": 3
+        }
+      ],
+      "testType": 0
+    },
+    {
+      "expandedScore": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "isContainsTests": false,
+      "maxScore": 5,
+      "name": "recuerdoDiferido01",
+      "parameters": [
+        "recallWords01.png"
+      ],
+      "parametersNumber": 1,
+      "parametersType": [
+        "filename"
+      ],
+      "score": 0,
+      "scoreOptions": [
+        "Rostro",
+        "Seda",
+        "Iglesia",
+        "Clavel",
+        "Rojo"
+      ],
+      "startTestTimeOffset": 30319,
+      "stopTestTimeOffset": 30872,
+      "testID": "312",
+      "testType": 3
+    }
+  ],
+  "info": {
+    "isTrialScored": true,
+    "startTime": 1620250763747,
+    "totalMaxScore": 21,
+    "totalScore": 1,
+    "trialID": "MOCA001"
+  }
+}

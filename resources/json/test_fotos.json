@@ -1,0 +1,128 @@
+{
+  "info": {
+    "isTrialScored": false,
+    "trialID": "FOTOS001"
+  } ,
+  "tests": [
+    {
+      "name": "nombrarFotos",
+      "maxScore": 6,
+      "testType": 0,
+      "testID": "001",
+      "isContainsTests": true,
+      "testPieces": [
+        {
+          "name": "nombrarFotos01",
+          "maxScore": 0,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["cartas.png"],
+          "testType": 3,
+          "testID": "301"
+        },
+        {
+          "name": "nombrarFotos02",
+          "maxScore": 0,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["coche.png"],
+          "testType": 3,
+          "testID": "302"
+        },
+        {
+          "name": "nombrarFotos03",
+          "maxScore": 0,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["pera.png"],
+          "testType": 3,
+          "testID": "303"
+        },
+        {
+          "name": "nombrarFotos04",
+          "maxScore": 0,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["trompeta.png"],
+          "testType": 3,
+          "testID": "304"
+        },
+        {
+          "name": "nombrarFotos05",
+          "maxScore": 0,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["zapatos.png"],
+          "testType": 3,
+          "testID": "305"
+        },
+        {
+          "name": "nombrarFotos06",
+          "maxScore": 0,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["cuchara.png"],
+          "testType": 3,
+          "testID": "306"
+        }
+      ]
+    },
+    {
+      "name": "fluidezVerbalNombres",
+      "maxScore": 100,
+      "testType": 0,
+      "testID": "001",
+      "isContainsTests": true,
+      "testPieces": [
+        {
+          "name": "fluidezVerbalNombresHombre",
+          "maxScore": 100,
+          "parametersNumber": 1,
+          "parametersType": ["filename"],
+          "parameters": ["nombresDeHombre.png"],
+          "testType": 3,
+          "testID": "308"
+        },
+        {
+          "name": "fluidezVerbalNombresMujer",
+          "maxScore": 100,
+          "parametersNumber": 1,
+          "parametersType": ["filename"],
+          "parameters": ["nombresDeMujer.png"],
+          "testType": 3,
+          "testID": "308"
+        }
+
+      ]
+    },
+    {
+      "name": "recuerdoDiferido",
+      "maxScore": 6,
+      "testType": 0,
+      "testID": "001",
+      "isContainsTests": true,
+      "testPieces": [
+        {
+          "name": "recuerdoDiferido01",
+          "maxScore": 12,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["recuerdoDiferido01.png"],
+          "testType": 3,
+          "testID": "312",
+          "scoreOptions": ["Cartas","Coche","Pera","Trompeta","Zapatos", "Cuchara"]
+        },
+        {
+          "name": "recuerdoDiferido02",
+          "maxScore": 6,
+          "parametersNumber": 1,
+          "parametersType":["filename"],
+          "parameters": ["recuerdoDiferido02.png"],
+          "testType": 3,
+          "testID": "312",
+          "scoreOptions": ["Cartas","Coche","Pera","Trompeta","Zapatos", "Cuchara"]
+        }
+      ]
+    }
+  ]
+}

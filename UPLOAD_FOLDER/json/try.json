@@ -1,0 +1,127 @@
+{
+  "info": {
+    "totalMaxScore": 11,
+    "totalScore": 4,
+    "trialID": "MOCA001",
+    "isTrialScored": false
+  },
+  "tests": [
+    {
+      "comment": "Une los puntos",
+      "filename": "joinDots01.jpg",
+      "maxScore": 1,
+      "name": "joinDots",
+      "outputFilename": "joinDots_draw.jpeg",
+      "score": 0,
+      "testID": "101"
+    },
+    {
+      "comment": "Copia el dibujo del cubo",
+      "expandedScore": [
+        1
+      ],
+      "filename": "cubo.jpg",
+      "maxScore": 1,
+      "name": "copyCube",
+      "outputFilename": "copyCube_draw.jpeg",
+      "score": 1,
+      "testID": "102"
+    },
+    {
+      "comment": "Dibuja un reloj marcando las 11 y 10",
+      "expandedScore": [
+        1,
+        0,
+        1
+      ],
+      "filename": "blank.jpg",
+      "maxScore": 3,
+      "name": "drawClock",
+      "outputFilename": "drawClock_draw.jpeg",
+      "score": 2,
+      "scoreComments": [
+        "Contorno",
+        "N\u00fameros",
+        "Agujas"
+      ],
+      "testID": "103"
+    },
+    {
+      "filename": "leon.jpeg",
+      "maxScore": 1,
+      "name": "fotoLeon",
+      "outputFilename": "fotoLeon_audio.3gp",
+      "score": 0,
+      "testID": "001"
+    },
+    {
+      "filename": "rinoceronte.jpeg",
+      "maxScore": 1,
+      "name": "fotoRinoceronte",
+      "score": 0,
+      "testID": "002"
+    },
+    {
+      "filename": "dromedario.jpeg",
+      "maxScore": 1,
+      "name": "fotoDromedario",
+      "score": 0,
+      "testID": "003"
+    },
+    {
+      "filename": "attention01.png",
+      "maxScore": 1,
+      "name": "atencionOrdenDirecto",
+      "score": 0,
+      "testID": "004"
+    },
+    {
+      "filename": "attention02.png",
+      "maxScore": 1,
+      "name": "atencionOrdenInverso",
+      "score": 0,
+      "testID": "005"
+    },
+    {
+      "expandedScore": [
+        1
+      ],
+      "maxScore": 1,
+      "name": "pulsarLetraA",
+      "outputFilename": "pulsarLetraA_screenshot.jpeg",
+      "score": 1,
+      "testID": "201",
+      "textArray": [
+        "F",
+        "B",
+        "A",
+        "C",
+        "M",
+        "N",
+        "A",
+        "A",
+        "J",
+        "K",
+        "L",
+        "B",
+        "A",
+        "F",
+        "A",
+        "K",
+        "D",
+        "E",
+        "A",
+        "A",
+        "A",
+        "J",
+        "A",
+        "M",
+        "O",
+        "F",
+        "A",
+        "A",
+        "B"
+      ]
+    }
+  ]
+}

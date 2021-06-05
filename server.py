@@ -1,8 +1,9 @@
 from flask import Flask, request, send_file, send_from_directory, render_template
 from werkzeug.datastructures import FileStorage
+import json
 import os
 
-from mongodb_db import Database
+from mongo_db import Database
 
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'edf'])
@@ -105,10 +106,28 @@ def db_insert_something():
 
 @app.route("/insert_trial", methods=['GET','POST'])
 def db_insert_trial():
-    with open(f"{app.config["CLIENT_JSON"]}/moca_trial.json") as f:
-        mydict = eval(f.read())
+    with open(f"{app.config['CLIENT_JSON']}/moca_trial.json", 'r') as f:
+        print(f.read())
+        f.seek(0)
+        mydict = json.load(f)
     print(mydict)
-    Database.insert("trials", mydict)
+    print(type(mydict))
+    final_dict = {"moca_trial": mydict}
 
+    Database.insert("trials", mydict)
+    return 'OK', 200
+
+@app.route("/get_users", methods=['GET','POST'])
+def get_users():
+    return Database.get_users()
+
+@app.route("/get_trials", methods=['GET','POST'])
+def get_trials():
+    return Database.get_trials_info()
+
+@app.route("/get_tests/<userID>", methods=['GET','POST'])
+def get_tests(userID):
+    return Database.get_tests_info_from_userID(userID)
 
 app.run(host='0.0.0.0')
+

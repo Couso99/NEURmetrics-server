@@ -42,6 +42,20 @@ class Database:
     @staticmethod
     def get_tests_info_from_userID(userID):
         tests = Database.db["tests"]
-        cursor = tests.find({"info.userID":int(userID)}, {'_id': False,'info': True})
+        cursor = tests.find({"info.userID":userID}, {'_id': False,'info': True})
+        json_data = dumps(list(cursor), indent=2)
+        return json_data
+
+    @staticmethod
+    def get_trial_from_trialID(trialID):
+        trials = Database.db["trials"]
+        cursor = trials.find({"info.trialID":trialID}, {'_id': False})
+        json_data = dumps(list(cursor), indent=2)
+        return json_data
+
+    @staticmethod
+    def get_user_trial(userID, start_time):
+        tests = Database.db['tests']
+        cursor = tests.find({'info.userID':userID},{'_id': False})
         json_data = dumps(list(cursor), indent=2)
         return json_data

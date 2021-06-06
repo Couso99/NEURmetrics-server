@@ -27,7 +27,7 @@ def home():
 def get_json(json_filename):
     #print(os.path.join(app.config['CLIENT_JSON'], json_filename))
     try:
-        return send_from_directory(app.config["CLIENT_JSON"], filename=json_filename, as_attachment=True)
+        return send_from_directory(app.config["CLIENT_JSON"], path=json_filename, as_attachment=True)
     except FileNotFoundError:
         abort(404)
 
@@ -35,14 +35,14 @@ def get_json(json_filename):
 def get_image(image_filename):
     #print(os.path.join(app.config["CLIENT_IMAGES"], image_filename))
     try:
-        return send_from_directory(app.config["CLIENT_IMAGES"], filename=image_filename, as_attachment=True)
+        return send_from_directory(app.config["CLIENT_IMAGES"], path=image_filename, as_attachment=True)
     except FileNotFoundError:
         abort(404)
 
 @app.route("/get-file/user-made/<filename>", methods=['GET','POST'])
 def get_file(filename):
     try:
-        return send_from_directory(app.config["UPLOAD_GENERAL"], filename=filename, as_attachment=True)
+        return send_from_directory(app.config["UPLOAD_GENERAL"], path=filename, as_attachment=True)
     except FileNotFoundError:
         abort(404)
 
@@ -98,13 +98,13 @@ def db_initialize():
     return 'OK', 200
 
 
-@app.route("/insert_sth", methods=['GET','POST'])
+'''@app.route("/insert_sth", methods=['GET','POST'])
 def db_insert_something():
     mydict = { "name": "prueba a ver si esto tira", "objetivo": "Que pinche funcione" }
     Database.insert("prueba", mydict)
     return 'OK', 200
 
-@app.route("/insert_trial", methods=['GET','POST'])
+@app.route("/insert-trial", methods=['GET','POST'])
 def db_insert_trial():
     with open(f"{app.config['CLIENT_JSON']}/moca_trial.json", 'r') as f:
         print(f.read())
@@ -115,19 +115,26 @@ def db_insert_trial():
     final_dict = {"moca_trial": mydict}
 
     Database.insert("trials", mydict)
-    return 'OK', 200
+    return 'OK', 200'''
 
-@app.route("/get_users", methods=['GET','POST'])
+@app.route("/get-users", methods=['GET','POST'])
 def get_users():
     return Database.get_users()
 
-@app.route("/get_trials", methods=['GET','POST'])
+@app.route("/get-trials", methods=['GET','POST'])
 def get_trials():
     return Database.get_trials_info()
 
-@app.route("/get_tests/<userID>", methods=['GET','POST'])
+@app.route("/get-user-trials/<userID>", methods=['GET','POST'])
 def get_tests(userID):
     return Database.get_tests_info_from_userID(userID)
 
-app.run(host='0.0.0.0')
+@app.route("/get-trial/<trialID>", methods=['GET','POST'])
+def get_trial_from_trialID(trialID):
+    return Database.get_trial_from_trialID(trialID)
 
+@app.route("/get-user-trial/<userID>/<start_time>", methods=['GET','POST'])
+def get_user_trial(userID, start_time):
+    return Database.get_user_trial(userID, start_time)
+
+app.run(host='0.0.0.0')

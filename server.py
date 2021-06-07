@@ -137,4 +137,15 @@ def get_trial_from_trialID(trialID):
 def get_user_trial(userID, start_time):
     return Database.get_user_trial(userID, start_time)
 
+@app.route("/upload-user-trial", methods=['POST'])
+def upload_user_trial():
+    file = request.files["file"]
+    #print(dir(file))
+    #print(file)
+    #print(file.stream.read())
+    json_dict = json.load(file.stream)
+    Database.insert_user_trial(json_dict)
+
+    return 'OK', 200
+
 app.run(host='0.0.0.0')

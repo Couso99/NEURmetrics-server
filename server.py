@@ -148,4 +148,12 @@ def upload_user_trial():
 
     return 'OK', 200
 
+@app.route("/update-user-trial", methods=['POST'])
+def update_user_trial():
+    file = request.files['file']
+    json_dict = json.load(file.stream)
+    Database.update_user_trial(json_dict)
+
+    return 'OK', 200
+
 app.run(host='0.0.0.0')

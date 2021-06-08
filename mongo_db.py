@@ -9,8 +9,8 @@ class Database:
 
     DB_NAME = "EEG_Environment"
     USERS_COL = "users"
-    NEW_TRIALS_COL = "trials"
-    USERS_TRIALS_COL = "tests"
+    NEW_TRIALS_COL = "new_trials"
+    USERS_TRIALS_COL = "user_trials"
 
 
     @staticmethod
@@ -61,10 +61,17 @@ class Database:
     @staticmethod
     def get_user_trial(userID, start_time):
         tests = Database.db[Database.USERS_TRIALS_COL]
-        cursor = tests.find({'info.userID':userID},{'_id': False})
+        cursor = tests.find({'info.userID':userID,'info.startTime':int(start_time)},{'_id': False})
         json_data = dumps(list(cursor), indent=2)
         return json_data
 
     @staticmethod
     def insert_user_trial(data):
         Database.insert(Database.USERS_TRIALS_COL, data)
+
+    @staticmethod
+    def update_user_trial(data):
+        userID = data['info']['userID']
+        startTime = data['info']['startTime']
+        tests = Database.db[Database.USERS_TRIALS_COL]
+        tests.update({'info.userID':userID,'info.startTime':startTime}, data)

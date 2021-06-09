@@ -1,12 +1,16 @@
 from flask import Flask, request, send_file, send_from_directory, render_template
 from werkzeug.datastructures import FileStorage
+import tempfile
 import json
 import os
 
+from connection_manager import ConnectionManager
 from mongo_db import Database
 
 
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'edf'])
+#ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'edf'])
+
+conn_manager = ConnectionManager()
 
 app = Flask(__name__)
 app.config['BASE_FOLDER'] = "."
@@ -16,6 +20,7 @@ app.config['CLIENT_IMAGES'] = f"{app.config['BASE_FOLDER']}/resources/images"
 app.config['CLIENT_AUDIO'] = f"{app.config['BASE_FOLDER']}/resources/audio"
 app.config['UPLOAD_JSON'] = f"{app.config['UPLOAD_FOLDER']}/json"
 app.config['UPLOAD_GENERAL'] = f"{app.config['UPLOAD_FOLDER']}/general"
+app.config['UPLOAD_EDF'] = f"{app.config['UPLOAD_FOLDER']}/edf"
 
 @app.route("/")
 def home():
@@ -90,6 +95,27 @@ def upload_json_():
     FileStorage(file).save(os.path.join(app.config['UPLOAD_JSON'], file.filename))
     return 'OK', 200
 
+@app.route("/pre-upload-edf/<deviceID>", methods=['GET','POST'])
+def pre_upload_edf(deviceID):
+    temp_name = next(tempfile._get_candidate_names())
+
+    dev_conn = conn_manager.find_connection_deviceID(deviceID)
+    dev_conn.add_associatedData({'edfFilename':temp_name})
+
+    return temp_name
+
+@app.route("/upload-edf/<deviceID>", methods=['POST'])
+def upload_edf(deviceID):
+    file = request.files['file']
+
+    temp_name = file.filename
+
+    filename = Database.update_edf_filename(temp_name)
+
+    FileStorage(file).save(os.path.join(app.config['UPLOAD_EDF'], filename))
+    return 'OK', 200
+
+
 ##### DATABASE
 
 @app.route("/initialize", methods=['GET','POST'])
@@ -97,6 +123,16 @@ def db_initialize():
     Database.initialize()
     return 'OK', 200
 
+@app.route("/initialize/<deviceID>", methods=['GET','POST'])
+def db_initialize_w_userID(deviceID):
+    Database.initialize()
+    conn_manager.add_device_connection(request.remote_addr, deviceID)
+    return 'OK',200
+
+@app.route("/remove-dev/<deviceID>",methods=['GET','POST'])
+def remove_device_connection(deviceID):
+    conn_manager.remove_device_connection(deviceID)
+    return 'OK', 200
 
 '''@app.route("/insert_sth", methods=['GET','POST'])
 def db_insert_something():
@@ -140,11 +176,18 @@ def get_user_trial(userID, start_time):
 @app.route("/upload-user-trial", methods=['POST'])
 def upload_user_trial():
     file = request.files["file"]
+
+    dev_conn = conn_manager.find_connection_ip(request.remote_addr)
+    associatedData = dev_conn.get_associatedData()
+
     #print(dir(file))
     #print(file)
     #print(file.stream.read())
     json_dict = json.load(file.stream)
-    Database.insert_user_trial(json_dict)
+    Database.insert_user_trial(json_dict, associatedData)
+
+    dev_conn.remove_associated_data()
+
 
     return 'OK', 200
 

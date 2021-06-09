@@ -6,6 +6,7 @@ class Database:
     """docstring for MongoDB."""
     URI = "mongodb://127.0.0.1:27017"
     db = None
+    isInitialized = False
 
     DB_NAME = "EEG_Environment"
     USERS_COL = "users"
@@ -15,8 +16,10 @@ class Database:
 
     @staticmethod
     def initialize():
-        client = pymongo.MongoClient(Database.URI)
-        Database.db = client[Database.DB_NAME]
+        if not Database.isInitialized:
+            client = pymongo.MongoClient(Database.URI)
+            Database.db = client[Database.DB_NAME]
+        Database.isInitialized = True
 
     @staticmethod
     def insert(collection,data):
@@ -61,12 +64,15 @@ class Database:
     @staticmethod
     def get_user_trial(userID, start_time):
         tests = Database.db[Database.USERS_TRIALS_COL]
-        cursor = tests.find({'info.userID':userID,'info.startTime':int(start_time)},{'_id': False})
+        cursor = tests.find({'info.userID':userID,'info.startTime':int(start_time)},{'_id': False}).sort('info.startTime', pymongo.ASCENDING)
         json_data = dumps(list(cursor), indent=2)
         return json_data
 
     @staticmethod
-    def insert_user_trial(data):
+    def insert_user_trial(data, additional_data=None):
+        if additional_data:
+            data['info'].update(additional_data)
+
         Database.insert(Database.USERS_TRIALS_COL, data)
 
     @staticmethod
@@ -75,3 +81,14 @@ class Database:
         startTime = data['info']['startTime']
         tests = Database.db[Database.USERS_TRIALS_COL]
         tests.update({'info.userID':userID,'info.startTime':startTime}, data)
+
+    @staticmethod
+    def update_edf_filename(temp_filename):
+        user_trials = Database.db[Database.USERS_TRIALS_COL]
+        cursor = user_trials.find({'info.edfFilename':temp_filename},{'_id':False})
+        info_dict = list(cursor)[0]['info']
+        userID = info_dict['userID']
+        startTime = info_dict['startTime']
+        filename = f"edf_{userID}_{startTime}.edf"
+        user_trials.update({'info.edfFilename':temp_filename},{'$set':{'info.edfFilename':filename}})
+        return filename

@@ -28,7 +28,7 @@ def home():
 
 ##### FILES UPLOAD/DOWNLOAD
 
-@app.route("/get-file/general/json/<json_filename>", methods=['GET','POST'])
+@app.route("/file/general/json/<json_filename>", methods=['GET'])
 def get_json(json_filename):
     #print(os.path.join(app.config['CLIENT_JSON'], json_filename))
     try:
@@ -36,7 +36,7 @@ def get_json(json_filename):
     except FileNotFoundError:
         abort(404)
 
-@app.route("/get-file/general/image/<image_filename>", methods=['GET','POST'])
+@app.route("/file/general/image/<image_filename>", methods=['GET'])
 def get_image(image_filename):
     #print(os.path.join(app.config["CLIENT_IMAGES"], image_filename))
     try:
@@ -44,20 +44,20 @@ def get_image(image_filename):
     except FileNotFoundError:
         abort(404)
 
-@app.route("/get-file/user-made/<filename>", methods=['GET','POST'])
+@app.route("/file/user-made/<filename>", methods=['GET'])
 def get_file(filename):
     try:
         return send_from_directory(app.config["UPLOAD_GENERAL"], path=filename, as_attachment=True)
     except FileNotFoundError:
         abort(404)
 
-@app.route("/upload/json", methods=['POST'])
+@app.route("/file/json", methods=['POST'])
 def upload_json():
     file = request.files['file']
     FileStorage(file).save(os.path.join(app.config['UPLOAD_JSON'], file.filename))
     return 'OK', 200
 
-@app.route("/upload/general", methods=['POST'])
+@app.route("/file/general", methods=['POST'])
 def upload_general_():
     file = request.files['file']
     FileStorage(file).save(os.path.join(app.config['UPLOAD_GENERAL'], file.filename))
@@ -153,27 +153,27 @@ def db_insert_trial():
     Database.insert("trials", mydict)
     return 'OK', 200'''
 
-@app.route("/get-users", methods=['GET','POST'])
+@app.route("/users", methods=['GET'])
 def get_users():
     return Database.get_users()
 
-@app.route("/get-trials", methods=['GET','POST'])
+@app.route("/trials", methods=['GET'])
 def get_trials():
     return Database.get_trials_info()
 
-@app.route("/get-user-trials/<userID>", methods=['GET','POST'])
+@app.route("/user-trials/<userID>", methods=['GET'])
 def get_tests(userID):
     return Database.get_tests_info_from_userID(userID)
 
-@app.route("/get-trial/<trialID>", methods=['GET','POST'])
+@app.route("/trial/<trialID>", methods=['GET'])
 def get_trial_from_trialID(trialID):
     return Database.get_trial_from_trialID(trialID)
 
-@app.route("/get-user-trial/<userID>/<start_time>", methods=['GET','POST'])
+@app.route("/user-trial/<userID>/<start_time>", methods=['GET'])
 def get_user_trial(userID, start_time):
     return Database.get_user_trial(userID, start_time)
 
-@app.route("/upload-user-trial", methods=['POST'])
+@app.route("/user-trial", methods=['POST'])
 def upload_user_trial():
     file = request.files["file"]
 
@@ -191,7 +191,7 @@ def upload_user_trial():
 
     return 'OK', 200
 
-@app.route("/update-user-trial", methods=['POST'])
+@app.route("/user-trial", methods=['PATCH'])
 def update_user_trial():
     file = request.files['file']
     json_dict = json.load(file.stream)

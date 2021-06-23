@@ -36,7 +36,7 @@ class Database:
     @staticmethod
     def get_users():
         users = Database.db[Database.USERS_COL]
-        cursor = users.find({}, {'_id': False})
+        cursor = users.find({})
         json_data = dumps(list(cursor),indent=2)
         return json_data
 
@@ -74,6 +74,10 @@ class Database:
             data['info'].update(additional_data)
 
         Database.insert(Database.USERS_TRIALS_COL, data)
+
+    @staticmethod
+    def insert_user(data):
+        Database.insert(Database.USERS_COL, data)
 
     @staticmethod
     def update_user_trial(data):

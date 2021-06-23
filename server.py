@@ -134,28 +134,16 @@ def remove_device_connection(deviceID):
     conn_manager.remove_device_connection(deviceID)
     return 'OK', 200
 
-'''@app.route("/insert_sth", methods=['GET','POST'])
-def db_insert_something():
-    mydict = { "name": "prueba a ver si esto tira", "objetivo": "Que pinche funcione" }
-    Database.insert("prueba", mydict)
-    return 'OK', 200
-
-@app.route("/insert-trial", methods=['GET','POST'])
-def db_insert_trial():
-    with open(f"{app.config['CLIENT_JSON']}/moca_trial.json", 'r') as f:
-        print(f.read())
-        f.seek(0)
-        mydict = json.load(f)
-    print(mydict)
-    print(type(mydict))
-    final_dict = {"moca_trial": mydict}
-
-    Database.insert("trials", mydict)
-    return 'OK', 200'''
-
 @app.route("/users", methods=['GET'])
 def get_users():
     return Database.get_users()
+
+@app.route("/users", methods=['POST'])
+def insert_user():
+    file = request.files["file"]
+    json_dict = json.load(file.stream)
+    Database.insert_user(json_dict)
+    return 'OK', 200
 
 @app.route("/trials", methods=['GET'])
 def get_trials():
@@ -169,11 +157,11 @@ def get_tests(userID):
 def get_trial_from_trialID(trialID):
     return Database.get_trial_from_trialID(trialID)
 
-@app.route("/user-trial/<userID>/<start_time>", methods=['GET'])
+@app.route("/user-trials/<userID>/<start_time>", methods=['GET'])
 def get_user_trial(userID, start_time):
     return Database.get_user_trial(userID, start_time)
 
-@app.route("/user-trial", methods=['POST'])
+@app.route("/user-trials", methods=['POST'])
 def upload_user_trial():
     file = request.files["file"]
 
@@ -188,10 +176,9 @@ def upload_user_trial():
 
     dev_conn.remove_associated_data()
 
-
     return 'OK', 200
 
-@app.route("/user-trial", methods=['PATCH'])
+@app.route("/user-trials", methods=['PATCH'])
 def update_user_trial():
     file = request.files['file']
     json_dict = json.load(file.stream)

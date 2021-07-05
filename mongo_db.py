@@ -87,12 +87,13 @@ class Database:
         tests.update({'info.userID':userID,'info.startTime':startTime}, data)
 
     @staticmethod
-    def update_edf_filename(temp_filename):
+    def update_filename(dataType, temp_filename):
         user_trials = Database.db[Database.USERS_TRIALS_COL]
-        cursor = user_trials.find({'info.edfFilename':temp_filename},{'_id':False})
+        cursor = user_trials.find({f'info.additionalData.{dataType}':temp_filename},{'_id':False})
         info_dict = list(cursor)[0]['info']
         userID = info_dict['userID']
         startTime = info_dict['startTime']
-        filename = f"edf_{userID}_{startTime}.edf"
-        user_trials.update({'info.edfFilename':temp_filename},{'$set':{'info.edfFilename':filename}})
+        ## TODO: mantener extensión del archivo
+        filename = f"{dataType}_{userID}_{startTime}.edf"
+        user_trials.update({f'info.additionalData.{dataType}':temp_filename},{'$set':{f'info.additionalData.{dataType}':filename}})
         return filename

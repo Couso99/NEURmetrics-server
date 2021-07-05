@@ -28,15 +28,7 @@ def home():
 
 ##### FILES UPLOAD/DOWNLOAD
 
-@app.route("/file/general/json/<json_filename>", methods=['GET'])
-def get_json(json_filename):
-    #print(os.path.join(app.config['CLIENT_JSON'], json_filename))
-    try:
-        return send_from_directory(app.config["CLIENT_JSON"], path=json_filename, as_attachment=True)
-    except FileNotFoundError:
-        abort(404)
-
-@app.route("/file/general/image/<image_filename>", methods=['GET'])
+@app.route("/files/general/images/<image_filename>", methods=['GET'])
 def get_image(image_filename):
     #print(os.path.join(app.config["CLIENT_IMAGES"], image_filename))
     try:
@@ -44,73 +36,35 @@ def get_image(image_filename):
     except FileNotFoundError:
         abort(404)
 
-@app.route("/file/user-made/<filename>", methods=['GET'])
+@app.route("/files/user-made/<filename>", methods=['GET'])
 def get_file(filename):
     try:
         return send_from_directory(app.config["UPLOAD_GENERAL"], path=filename, as_attachment=True)
     except FileNotFoundError:
         abort(404)
 
-@app.route("/file/json", methods=['POST'])
-def upload_json():
-    file = request.files['file']
-    FileStorage(file).save(os.path.join(app.config['UPLOAD_JSON'], file.filename))
-    return 'OK', 200
-
-@app.route("/file/general", methods=['POST'])
+@app.route("/files/general", methods=['POST'])
 def upload_general_():
     file = request.files['file']
     FileStorage(file).save(os.path.join(app.config['UPLOAD_GENERAL'], file.filename))
     return 'OK', 200
 
-@app.route("/upload-audio", methods=['POST'])
-def upload_audio():
-    file = request.files['file']
-    filename = file.filename
-    file.save(os.path.join(app.config['CLIENT_AUDIO'], filename))
-
-@app.route("/upload", methods=['POST'])
-def upload_file():
-    file = request.files['file']
-    filename = file.filename
-    FileStorage(request.stream).save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return 'OK', 200
-
-@app.route("/upload-general", methods=['POST'])
-def upload_general():
-    #print(dir(request.files))
-    #print(request.files['picture'].filename)
-    #print(request.files)
-
-    # Vale para leer la description que se manda desde Retrofit2
-    #print(request.form)
-
-    file = request.files['file']
-    FileStorage(file).save(os.path.join(app.config['UPLOAD_GENERAL'], file.filename))
-    return 'OK', 200
-
-@app.route("/upload-json", methods=['POST'])
-def upload_json_():
-    file = request.files['file']
-    FileStorage(file).save(os.path.join(app.config['UPLOAD_JSON'], file.filename))
-    return 'OK', 200
-
-@app.route("/pre-upload-edf/<deviceID>", methods=['GET','POST'])
+@app.route("/additional-data/<dataType>/<deviceID>", methods=['GET'])
 def pre_upload_edf(deviceID):
     temp_name = next(tempfile._get_candidate_names())
 
     dev_conn = conn_manager.find_connection_deviceID(deviceID)
-    dev_conn.add_associatedData({'edfFilename':temp_name})
+    dev_conn.add_associatedData({dataType:temp_name})
 
     return temp_name
 
-@app.route("/upload-edf/<deviceID>", methods=['POST'])
+@app.route("/additional-data/<dataType>", methods=['POST'])
 def upload_edf(deviceID):
     file = request.files['file']
 
     temp_name = file.filename
 
-    filename = Database.update_edf_filename(temp_name)
+    filename = Database.update_filename(dataType, temp_name)
 
     FileStorage(file).save(os.path.join(app.config['UPLOAD_EDF'], filename))
     return 'OK', 200
@@ -118,20 +72,20 @@ def upload_edf(deviceID):
 
 ##### DATABASE
 
-@app.route("/initialize", methods=['GET','POST'])
+@app.route("/db", methods=['GET','POST'])
 def db_initialize():
     Database.initialize()
     return 'OK', 200
 
-@app.route("/initialize/<deviceID>", methods=['GET','POST'])
+@app.route("/connection/<deviceID>", methods=['POST'])
 def db_initialize_w_userID(deviceID):
     Database.initialize()
     conn_manager.add_device_connection(request.remote_addr, deviceID)
     return 'OK',200
 
-@app.route("/remove-dev/<deviceID>",methods=['GET','POST'])
-def remove_device_connection(deviceID):
-    conn_manager.remove_device_connection(deviceID)
+@app.route("/connection",methods=['DELETE'])
+def remove_device_connection():
+    conn_manager.remove_device_connection(conn_manager.find_connection_ip(request.remote_addr).get_deviceID())
     return 'OK', 200
 
 @app.route("/users", methods=['GET'])
@@ -149,13 +103,13 @@ def insert_user():
 def get_trials():
     return Database.get_trials_info()
 
+@app.route("/trials/<trialID>", methods=['GET'])
+def get_trial_from_trialID(trialID):
+    return Database.get_trial_from_trialID(trialID)
+
 @app.route("/user-trials/<userID>", methods=['GET'])
 def get_tests(userID):
     return Database.get_tests_info_from_userID(userID)
-
-@app.route("/trial/<trialID>", methods=['GET'])
-def get_trial_from_trialID(trialID):
-    return Database.get_trial_from_trialID(trialID)
 
 @app.route("/user-trials/<userID>/<start_time>", methods=['GET'])
 def get_user_trial(userID, start_time):
@@ -168,9 +122,6 @@ def upload_user_trial():
     dev_conn = conn_manager.find_connection_ip(request.remote_addr)
     associatedData = dev_conn.get_associatedData()
 
-    #print(dir(file))
-    #print(file)
-    #print(file.stream.read())
     json_dict = json.load(file.stream)
     Database.insert_user_trial(json_dict, associatedData)
 

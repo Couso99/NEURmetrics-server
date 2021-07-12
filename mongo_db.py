@@ -1,6 +1,7 @@
 
 import pymongo
 from bson.json_util import dumps
+from bson.objectid import ObjectId
 
 class Database:
     """docstring for MongoDB."""
@@ -43,28 +44,28 @@ class Database:
     @staticmethod
     def get_trials_info():
         trials = Database.db[Database.NEW_TRIALS_COL]
-        cursor = trials.find({}, {'_id': False,'info': True})
+        cursor = trials.find({}, {'tests':False})
         json_data = dumps(list(cursor),indent=2)
         return json_data
 
     @staticmethod
     def get_tests_info_from_userID(userID):
         tests = Database.db[Database.USERS_TRIALS_COL]
-        cursor = tests.find({"info.userID":userID}, {'_id': False,'info': True})
+        cursor = tests.find({"info.userID":userID}, {'tests': False})
         json_data = dumps(list(cursor), indent=2)
         return json_data
 
     @staticmethod
     def get_trial_from_trialID(trialID):
         trials = Database.db[Database.NEW_TRIALS_COL]
-        cursor = trials.find({"info.trialID":trialID}, {'_id': False})
+        cursor = trials.find({"_id":ObjectId(trialID)},{'_id':False})
         json_data = dumps(list(cursor), indent=2)
         return json_data
 
     @staticmethod
-    def get_user_trial(userID, start_time):
+    def get_user_trial(trialID):
         tests = Database.db[Database.USERS_TRIALS_COL]
-        cursor = tests.find({'info.userID':userID,'info.startTime':int(start_time)},{'_id': False}).sort('info.startTime', pymongo.ASCENDING)
+        cursor = tests.find({"_id":ObjectId(trialID)},{'_id':False})
         json_data = dumps(list(cursor), indent=2)
         return json_data
 
@@ -72,7 +73,6 @@ class Database:
     def insert_user_trial(data, additional_data=None):
         if additional_data:
             data['info'].update(additional_data)
-
         Database.insert(Database.USERS_TRIALS_COL, data)
 
     @staticmethod
@@ -81,10 +81,9 @@ class Database:
 
     @staticmethod
     def update_user_trial(data):
-        userID = data['info']['userID']
-        startTime = data['info']['startTime']
-        tests = Database.db[Database.USERS_TRIALS_COL]
-        tests.update({'info.userID':userID,'info.startTime':startTime}, data)
+        user_trials = Database.db[Database.USERS_TRIALS_COL]
+        #tests.update({'info.userID':userID,'info.startTime':startTime}, data)
+        user_trials.update({"_id":ObjecttId(data["_id"])}, {'$set':{'info':data['info'],'tests':data['tests']}})
 
     @staticmethod
     def update_filename(dataType, temp_filename):

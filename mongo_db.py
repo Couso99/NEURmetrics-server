@@ -65,7 +65,7 @@ class Database:
     @staticmethod
     def get_user_trial(trialID):
         tests = Database.db[Database.USERS_TRIALS_COL]
-        cursor = tests.find({"_id":ObjectId(trialID)},{'_id':False})
+        cursor = tests.find({"_id":ObjectId(trialID)})
         json_data = dumps(list(cursor), indent=2)
         return json_data
 
@@ -83,7 +83,7 @@ class Database:
     def update_user_trial(data):
         user_trials = Database.db[Database.USERS_TRIALS_COL]
         #tests.update({'info.userID':userID,'info.startTime':startTime}, data)
-        user_trials.update({"_id":ObjecttId(data["_id"])}, {'$set':{'info':data['info'],'tests':data['tests']}})
+        user_trials.replace_one({"_id":ObjectId(data["_id"]['$oid'])}, {'info':data['info'],'tests':data['tests']})
 
     @staticmethod
     def update_filename(dataType, temp_filename):
